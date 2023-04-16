@@ -1,0 +1,651 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<link rel="alternate" type="application/rss+xml" title="Zijiao Blog" href="https://huzijiao.github.io/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="Zijiao Blog" href="https://huzijiao.github.io/atom.xml" />
+<link rel="alternate" type="application/json" title="Zijiao Blog" href="https://huzijiao.github.io/feed.json" />
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CInconsolata:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="/css/app.css?v=0.2.5">
+
+  
+  <meta name="keywords" content="study" />
+
+
+<link rel="canonical" href="https://huzijiao.github.io/2023/04/12/GCN%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+
+
+
+  <title>
+GCN学习笔记 - studynote |
+ZiJiao's Blog = Zijiao Blog = Hello</title>
+<meta name="generator" content="Hexo 6.3.0"></head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
+    </div>
+  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+  <h1 itemprop="name headline">GCN学习笔记
+  </h1>
+  
+<div class="meta">
+  <span class="item" title="作成日：2023-04-12 16:26:41">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">投稿日</span>
+    <time itemprop="dateCreated datePublished" datetime="2023-04-12T16:26:41+08:00">2023-04-12</time>
+  </span>
+</div>
+
+
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="ナビゲーションバーの切り替え">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="/" rel="start">ZiJiao's Blog</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
+      </li>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+      </div>
+      <div id="imgs" class="pjax">
+        <ul>
+          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gicit4jrvuj20zk0m8785.jpg"></li>
+          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1giclga70tsj20zk0m84mr.jpg"></li>
+          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gipeu1usa7j20zk0m8b29.jpg"></li>
+          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gipetv6p75j20zk0m8x6p.jpg"></li>
+          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1giclize41wj20zk0m87gk.jpg"></li>
+          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gipesrnqv3j20zk0m8ava.jpg"></li>
+        </ul>
+      </div>
+    </header>
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
+          
+  <div class="article wrap">
+    
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/">ホーム</a></span><i class="ic i-angle-right"></i>
+<span  class="current" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/categories/studynote/" itemprop="item" rel="index" title="カテゴリ studynote"><span itemprop="name">studynote</span></a>
+<meta itemprop="position" content="1" /></span>
+</div>
+
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="zh-cn">
+  <link itemprop="mainEntityOfPage" href="https://huzijiao.github.io/2023/04/12/GCN%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/images/avatar.jpg">
+    <meta itemprop="name" content="ZiJiao Hu">
+    <meta itemprop="description" content="Hello, to strive, to seek, to find, and never, ever to yield!">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Zijiao Blog">
+  </span>
+
+  <div class="body md" itemprop="articleBody">
+    
+
+    <h1 id="gcn学习笔记"><a class="anchor" href="#gcn学习笔记">#</a> GCN 学习笔记</h1>
+<h2 id="1gcn简介"><a class="anchor" href="#1gcn简介">#</a> 1.GCN 简介</h2>
+<p>基于图卷积网络 GCN 的文本数据处理</p>
+<p>由于空域卷积需要在图的每层进行邻居特征的聚合，因此每聚合一次就会削弱节点自身的特征。由于空域卷积需要在图的每层进行邻居特征的聚合，因此每聚合一次就会削弱节点自身的特征。为避免这个问题，聚合类空域方法的图神经网络通常只有两到三层。</p>
+<p>本项目搭建一个两层结构的 GCN 模型，规定特征向量长度并载入特征工程的输出向量数据。每层的节点特征更新过程是：使用一个 AGG 函数对节点的一阶邻居节点向量进行聚合，得到第 k 轮聚合后的向量编码，求平均值。在 GCN 模型中，节点的特征变换是逐层进行的。</p>
+<p>在 GCN 的训练过程中，划分为训练集和验证集，从训练集中随机取样，循环喂给网络。GCN 网络依次进行特征变换和邻居聚合，通过交叉熵计算预测值与真实值的损失，然后进行反向传播求导，通过 Adam 优化器调整特征变换网络的各层权重。在数据集中重新取样，反复迭代多个 epoch 直至模型收敛到合适范围内。在训练过程中，还要监测图神经网络在验证集上的性能表现。具体做法是在每轮 epoch 中计算网络对验证集的预测精度和损失值。图卷积神经网络可以类比于卷积神经网络在图像处理的位置。用随机的共享的卷积核得到像素点的加权和从而提取到某种特定的特征，然后用反向传播来优化卷积核参数就可以自动的提取特征，这是 CNN 提取特征的机制。现实中很多重要的数据都是用图的结构存储，例如社交网络信息，知识图谱，蛋白质网络，万维网等。这些图网络，不是整齐的矩阵形式，而是非结构化信息。</p>
+<ul>
+<li>Graph 上的任务</li>
+</ul>
+<p>图级别：预测蛋白质分子类别</p>
+<p>节点级别：预测节点所属</p>
+<p>边级别：预测图中人物之间的关系</p>
+<p>节点分类：预测特定节点的类型。<br />
+链接预测：预测两个节点是否有联系<br />
+社区检测：识别密集联系的节点群落。<br />
+网络相似性：两个 (子) 网络的相似性有多大？</p>
+<p>在图中，我们有节点特征（代表节点的数据）和图的结构（表示节点如何连接）。</p>
+<p>对于节点来说，我们可以很容易地得到每个节点的数据。但是当涉及到图的结构时，要从中提取有用的信息就不是一件容易的事情了。例如，如果 2 个节点彼此距离很近，我们是否应该将它们与其他对节点区别对待呢？高低度节点又该如何处理呢？其实，对于每一项具体的工作，仅仅是特征工程，即把图结构转换为我们的特征，就会消耗大量的时间和精力。</p>
+<p>如果能以某种方式同时得到图的节点特征和结构信息作为输入，让机器自己去判断哪些信息是有用的，那就更好了。这就是我们需要图表示学习的原因。</p>
+<p><img data-src="Untitled.png" alt="" /></p>
+<p>GCN 是一种卷积神经网络，它可以直接在图上工作，并利用图的结构信息。它解决的是对图（如引文网络）中的节点（如文档）进行分类的问题，其中仅有一小部分节点有标签（半监督学习）。如下图所示：</p>
+<p><img data-src="Untitled%201.png" alt="" /></p>
+<ul>
+<li>主要思想</li>
+</ul>
+<p>就像 &quot;卷积&quot; 这个名字所指代的那样，这个想法来自于图像，之后引进到图（Graphs）中。然而，当图像有固定的结构时，图（Graphs）就复杂得多。从图像到图形的卷积思想：</p>
+<p><img data-src="Untitled%202.png" alt="" /></p>
+<ul>
+<li>GCN 的基本思路：对于每个节点，我们从它的自身和其所有邻居节点处获取其特征信息。假设我们使用 average () 函数。我们将对所有的节点进行同样的操作。最后，我们将这些计算得到的平均值输入到神经网络中。</li>
+</ul>
+<p>在下图中，我们有一个引文网络的简单实例。其中每个节点代表一篇研究论文，同时边代表的是引文。我们在这里有一个预处理步骤。在这里我们不使用原始论文作为特征，而是将论文转换成向量（通过使用 NLP 嵌入，例如 tf-idf）。NLP 嵌入，例如 TF-IDF)。</p>
+<p>让我们考虑下绿色节点。首先，我们得到它的所有邻居的特征值，包括自身节点，接着取平均值。在 GCN 中，我们仅仅使用一个全连接层。在这个例子中，我们得到 2 维向量作为输出（全连接层的 2 个节点）最后通过神经网络返回一个结果向量并将此作为最终结果。</p>
+<p><img data-src="Untitled%203.png" alt="" /></p>
+<p>在实际操作中，我们可以使用比 average 函数更复杂的聚合函数。我们还可以将更多的层叠加在一起，以获得更深的 GCN。其中每一层的输出会被视为下一层的输入。2 层 GCN 的例子：第一层的输出是第二层的输入。同样，注意 GCN 中的神经网络仅仅是一个全连接层。</p>
+<p><img data-src="Untitled%204.png" alt="" /></p>
+<ul>
+<li>数学原理</li>
+</ul>
+<p>我们考虑图 G，如下图所示。</p>
+<p><img data-src="562c11dfa9ec8a13605ce2a7a219c388a1ecc0d0.png" alt="" /></p>
+<p>从图 G 中，我们有一个邻接矩阵 A 和一个度矩阵 D。同时我们也有特征矩阵 X。</p>
+<p><img data-src="0824ab18972bd4072d9ac34e2993cc560eb309c0.png" alt="" /></p>
+<p>那么我们怎样才能从邻居节点处得到每一个节点的特征值呢？解决方法就在于 A 和 X 的相乘。</p>
+<p>看看邻接矩阵的第一行，我们看到节点 A 与节点 E 之间有连接，得到的矩阵第一行就是与 A 相连接的 E 节点的特征向量（如下图）。同理，得到的矩阵的第二行是 D 和 E 的特征向量之和，通过这个方法，我们可以得到所有邻居节点的向量之和。计算 &quot;和向量矩阵&quot;AX 的第一行：</p>
+<p><img data-src="562c11dfa9ec8a134d0c3a3ba519c388a1ecc0fc.png" alt="" /></p>
+<p>这里还有一些需要改进的地方：</p>
+<ol>
+<li>我们忽略了节点本身的特征。例如，计算得到的矩阵的第一行也应该包含节点 A 的特征。</li>
+<li>我们不需要使用 sum () 函数，而是需要取平均值，甚至更好的邻居节点特征向量的加权平均值。</li>
+</ol>
+<p>那我们为什么不使用 sum () 函数呢？原因是在使用 sum () 函数时，度大的节点很可能会生成的大的 v 向量，而度低的节点往往会得到小的聚集向量，这可能会在以后造成梯度爆炸或梯度消失（例如，使用 sigmoid 时）。</p>
+<p>此外，神经网络对输入数据的规模很敏感。因此，我们需要对这些向量进行归一化，以摆脱可能出现的问题。在问题（1）中，我们可以通过在 A 中增加一个单位矩阵 I 来解决，得到一个新的邻接矩阵。</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mover accent="true"><mi>A</mi><mo>~</mo></mover><mo>=</mo><mi>A</mi><mo>+</mo><mi>λ</mi><msub><mi>I</mi><mi>N</mi></msub></mrow><annotation encoding="application/x-tex">\tilde{A}=A+\lambda I_{N}
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.9201899999999998em;vertical-align:0em;"></span><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.9201899999999998em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal">A</span></span></span><span style="top:-3.6023300000000003em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.11110999999999999em;"><span class="mord">~</span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.76666em;vertical-align:-0.08333em;"></span><span class="mord mathnormal">A</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.84444em;vertical-align:-0.15em;"></span><span class="mord mathnormal">λ</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07847em;">I</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.07847em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.10903em;">N</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></span></p>
+<p>取 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>λ</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">\lambda=1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathnormal">λ</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span>（使得节点本身的特征和邻居一样重要），我们就有<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover accent="true"><mi>A</mi><mo>~</mo></mover><mo>=</mo><mi>A</mi><mo>+</mo><msub><mi>I</mi><mi>N</mi></msub></mrow><annotation encoding="application/x-tex">\tilde{A}=A+I_{N}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.9201899999999998em;vertical-align:0em;"></span><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.9201899999999998em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal">A</span></span></span><span style="top:-3.6023300000000003em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.11110999999999999em;"><span class="mord">~</span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.76666em;vertical-align:-0.08333em;"></span><span class="mord mathnormal">A</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07847em;">I</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.07847em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.10903em;">N</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>，注意，我们可以把<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>λ</mi></mrow><annotation encoding="application/x-tex">\lambda</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathnormal">λ</span></span></span></span> 当做一个可训练的参数，但现在只要把<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>λ</mi></mrow><annotation encoding="application/x-tex">\lambda</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathnormal">λ</span></span></span></span> 赋值为 1 就可以了，即使在论文中，<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>λ</mi></mrow><annotation encoding="application/x-tex">\lambda</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathnormal">λ</span></span></span></span> 也只是简单的赋值为 1。通过给每个节点增加一个自循环，我们得到新的邻接矩阵：</p>
+<p><img data-src="1ad5ad6eddc451dada46e36de7e70061d11632a1.png" alt="" /></p>
+<p>对于问题 (2): 采用矩阵缩放，我们通常将矩阵乘以对角线矩阵。在当前的情况下，我们要取聚合特征的平均值，或者从数学角度上说，要根据节点度数对聚合向量矩阵 X 进行缩放。直觉告诉我们这里用来缩放的对角矩阵是和度矩阵 D 有关的东西（我们考虑的是新邻接矩阵的度矩阵<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover accent="true"><mi>D</mi><mo>~</mo></mover></mrow><annotation encoding="application/x-tex">\tilde{D}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.9201899999999998em;vertical-align:0em;"></span><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.9201899999999998em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02778em;">D</span></span></span><span style="top:-3.6023300000000003em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.19444em;"><span class="mord">~</span></span></span></span></span></span></span></span></span></span>）。</p>
+<p>现在的问题变成了我们要如何对和向量进行缩放 / 归一化？换句话说：</p>
+<p>我们如何将邻居的信息传递给特定节点？我们从我们的老朋友 average 开始。在这种情况下，<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover accent="true"><mi>D</mi><mo>~</mo></mover></mrow><annotation encoding="application/x-tex">\tilde{D}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.9201899999999998em;vertical-align:0em;"></span><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.9201899999999998em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02778em;">D</span></span></span><span style="top:-3.6023300000000003em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.19444em;"><span class="mord">~</span></span></span></span></span></span></span></span></span></span> 的逆矩阵（即，<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mover accent="true"><mi>D</mi><mo>~</mo></mover><mrow><mo>−</mo><mn>1</mn></mrow></msup></mrow><annotation encoding="application/x-tex">\tilde{D}^{-1}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.9201899999999998em;vertical-align:0em;"></span><span class="mord"><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.9201899999999998em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02778em;">D</span></span></span><span style="top:-3.6023300000000003em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.19444em;"><span class="mord">~</span></span></span></span></span></span></span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">−</span><span class="mord mtight">1</span></span></span></span></span></span></span></span></span></span></span></span>）就会用起作用。<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover accent="true"><mi>D</mi><mo>~</mo></mover></mrow><annotation encoding="application/x-tex">\tilde{D}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.9201899999999998em;vertical-align:0em;"></span><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.9201899999999998em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02778em;">D</span></span></span><span style="top:-3.6023300000000003em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.19444em;"><span class="mord">~</span></span></span></span></span></span></span></span></span></span> 的逆矩阵中的每个元素都是对角矩阵<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover accent="true"><mi>D</mi><mo>~</mo></mover></mrow><annotation encoding="application/x-tex">\tilde{D}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.9201899999999998em;vertical-align:0em;"></span><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.9201899999999998em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02778em;">D</span></span></span><span style="top:-3.6023300000000003em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.19444em;"><span class="mord">~</span></span></span></span></span></span></span></span></span></span> 中相应项的倒数。</p>
+<p><img data-src="d52a2834349b033b9ae3380d44d464d4d439bda4.png" alt="" /></p>
+<p>例如，节点 A 的度数为 2，所以我们将节点 A 的聚合向量乘以 1/2，而节点 E 的度数为 5，我们应该将 E 的聚合向量乘以 1/5，以此类推。</p>
+<p>因此，通过<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover accent="true"><mi>D</mi><mo>~</mo></mover></mrow><annotation encoding="application/x-tex">\tilde{D}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.9201899999999998em;vertical-align:0em;"></span><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.9201899999999998em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02778em;">D</span></span></span><span style="top:-3.6023300000000003em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.19444em;"><span class="mord">~</span></span></span></span></span></span></span></span></span></span> 取反和 X 的乘法，我们可以取所有邻居节点的特征向量（包括自身节点）的平均值。</p>
+<p><img data-src="962bd40735fae6cda6dcfda05ea95d2343a70fac.png" alt="" /></p>
+<p>到目前为止一切都很好。但是你可能会问加权平均 () 怎么样？直觉上，如果我们对高低度的节点区别对待，应该会更好。</p>
+<p><img data-src="35a85edf8db1cb135e46ec238c4e044992584bf0.png" alt="" /></p>
+<p><img data-src="8694a4c27d1ed21b5409d411f5748fc350da3f27.png" alt="" /></p>
+<p>但我们只是按行缩放，但忽略了对应的列（虚线框）。</p>
+<p><img data-src="42a98226cffc1e17cae5a61f1a8aa404738de963.png" alt="" /></p>
+<p><img data-src="ac4bd11373f0820242ff902d1ae1a9eaab641b57.png" alt="" /></p>
+<p>为列增加一个新的缩放器。</p>
+<p>新的缩放方法给我们提供了 &quot;加权&quot; 的平均值。我们在这里做的是给低度的节点加更多的权重，以减少高度节点的影响。这个加权平均的想法是，我们假设低度节点会对邻居节点产生更大的影响，而高度节点则会产生较低的影响，因为它们的影响力分散在太多的邻居节点上。</p>
+<p><img data-src="faf2b2119313b07eafb13d6e5bcdc32497dd8c6d.png" alt="" /></p>
+<p>在节点 B 处聚合邻接节点特征时，我们为节点 B 本身分配最大的权重（度数为 3），为节点 E 分配最小的权重（度数为 5）。</p>
+<p><img data-src="d31b0ef41bd5ad6ee160a75ad3d16bdcb7fd3c82.png" alt="" /></p>
+<p><img data-src="2fdda3cc7cd98d108ad57c287925ea097bec9043.png" alt="" /></p>
+<p>因为我们归一化了两次，所以将 &quot;-1&quot; 改为 &quot;-1/2&quot;</p>
+<p><img data-src="42a98226cffc1e1738cf151b1b8aa404738de94e.png" alt="" /></p>
+<p><img data-src="7a899e510fb30f24e04078059a8f8344ac4b03fb.png" alt="" /></p>
+<p>例如，我们有一个多分类问题，有 10 个类，则<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>F</mi></mrow><annotation encoding="application/x-tex">F</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">F</span></span></span></span> 被设置为 10。在第 2 层有了 10 个维度的向量后，我们将这些向量通过一个 softmax 函数进行预测。</p>
+<p>省略从傅立叶变换到拉普拉斯算子到拉普拉斯矩阵的数学推导，对于任何一个图卷积层都可以写成一个非线性函数</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><msup><mi>H</mi><mrow><mi>l</mi><mo>+</mo><mn>1</mn></mrow></msup><mo>=</mo><mi>f</mi><mrow><mo fence="true">(</mo><msup><mi>H</mi><mi>l</mi></msup><mo separator="true">,</mo><mi>A</mi><mo fence="true">)</mo></mrow></mrow><annotation encoding="application/x-tex">H^{l+1}=f\left(H^{l}, A\right)
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8991079999999999em;vertical-align:0em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.08125em;">H</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8991079999999999em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.01968em;">l</span><span class="mbin mtight">+</span><span class="mord mtight">1</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1.249118em;vertical-align:-0.35001em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="minner"><span class="mopen delimcenter" style="top:0em;"><span class="delimsizing size1">(</span></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.08125em;">H</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8991079999999999em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.01968em;">l</span></span></span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathnormal">A</span><span class="mclose delimcenter" style="top:0em;"><span class="delimsizing size1">)</span></span></span></span></span></span></span></p>
+<p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>H</mi><mn>0</mn></msup><mo>=</mo><mi>X</mi></mrow><annotation encoding="application/x-tex">H^{0}=X</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.08125em;">H</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">0</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.07847em;">X</span></span></span></span> 代表第一层的输入，N 为图的节点个数，D 为每个节点特征，A 为邻接矩阵。</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><msup><mi>H</mi><mrow><mi>l</mi><mo>+</mo><mn>1</mn></mrow></msup><mo>=</mo><mi>σ</mi><mrow><mo fence="true">(</mo><msup><mi>D</mi><mrow><mo>−</mo><mn>1</mn><mi mathvariant="normal">/</mi><mn>2</mn></mrow></msup><mover accent="true"><mi>A</mi><mo>~</mo></mover><msup><mi>D</mi><mrow><mo>−</mo><mn>1</mn><mi mathvariant="normal">/</mi><mn>2</mn></mrow></msup><msup><mi>H</mi><mi>l</mi></msup><msup><mi>W</mi><mi>l</mi></msup><mo fence="true">)</mo></mrow></mrow><annotation encoding="application/x-tex">H^{l+1}=\sigma\left(D^{-1 / 2} \tilde{A} D^{-1 / 2} H^{l} W^{l}\right)
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8991079999999999em;vertical-align:0em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.08125em;">H</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8991079999999999em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.01968em;">l</span><span class="mbin mtight">+</span><span class="mord mtight">1</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1.80002em;vertical-align:-0.65002em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">σ</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="minner"><span class="mopen delimcenter" style="top:0em;"><span class="delimsizing size2">(</span></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02778em;">D</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.938em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">−</span><span class="mord mtight">1</span><span class="mord mtight">/</span><span class="mord mtight">2</span></span></span></span></span></span></span></span></span><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.9201899999999998em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal">A</span></span></span><span style="top:-3.6023300000000003em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.11110999999999999em;"><span class="mord">~</span></span></span></span></span></span></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02778em;">D</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.938em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">−</span><span class="mord mtight">1</span><span class="mord mtight">/</span><span class="mord mtight">2</span></span></span></span></span></span></span></span></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.08125em;">H</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8991079999999999em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.01968em;">l</span></span></span></span></span></span></span></span></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">W</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8991079999999999em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.01968em;">l</span></span></span></span></span></span></span></span></span><span class="mclose delimcenter" style="top:0em;"><span class="delimsizing size2">)</span></span></span></span></span></span></span></p>
+<p>构建一个两层的 GCN，激活函数分别采用 ReLU 和 Softmax，整正向传播公式为</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>Z</mi><mo>=</mo><mi>f</mi><mo stretchy="false">(</mo><mi>X</mi><mo separator="true">,</mo><mi>A</mi><mo stretchy="false">)</mo><mo>=</mo><mi mathvariant="normal">softmax</mi><mo>⁡</mo><mrow><mo fence="true">(</mo><mover accent="true"><mi>A</mi><mo stretchy="true">^</mo></mover><mi mathvariant="normal">Re</mi><mo>⁡</mo><mi>L</mi><mi>U</mi><mrow><mo fence="true">(</mo><mover accent="true"><mi>A</mi><mo stretchy="true">^</mo></mover><mi>X</mi><msup><mi>W</mi><mrow><mo stretchy="false">(</mo><mn>0</mn><mo stretchy="false">)</mo></mrow></msup><mo fence="true">)</mo></mrow><msup><mi>W</mi><mrow><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow></msup><mo fence="true">)</mo></mrow></mrow><annotation encoding="application/x-tex">Z=f(X, A)=\operatorname{softmax}\left(\widehat{A} \operatorname{Re} L U\left(\widehat{A} X W^{(0)}\right) W^{(1)}\right)
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">Z</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.07847em;">X</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathnormal">A</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1.80002em;vertical-align:-0.65002em;"></span><span class="mop"><span class="mord mathrm">s</span><span class="mord mathrm">o</span><span class="mord mathrm" style="margin-right:0.07778em;">f</span><span class="mord mathrm">t</span><span class="mord mathrm">m</span><span class="mord mathrm">a</span><span class="mord mathrm">x</span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="minner"><span class="mopen delimcenter" style="top:0em;"><span class="delimsizing size2">(</span></span><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.92333em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal">A</span></span></span><span class="svg-align" style="width:calc(100% - 0.27778em);margin-left:0.27778em;top:-3.6833299999999998em;"><span class="pstrut" style="height:3em;"></span><span style="height:0.24em;"><svg width='100%' height='0.24em' viewBox='0 0 1062 239' preserveAspectRatio='none'><path d='M529 0h5l519 115c5 1 9 5 9 10 0 1-1 2-1 3l-4 22
+c-1 5-5 9-11 9h-2L532 67 19 159h-2c-5 0-9-4-11-9l-5-22c-1-6 2-12 8-13z'/></svg></span></span></span></span></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mop"><span class="mord mathrm">R</span><span class="mord mathrm">e</span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathnormal">L</span><span class="mord mathnormal" style="margin-right:0.10903em;">U</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="minner"><span class="mopen delimcenter" style="top:0em;"><span class="delimsizing size2">(</span></span><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.92333em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal">A</span></span></span><span class="svg-align" style="width:calc(100% - 0.27778em);margin-left:0.27778em;top:-3.6833299999999998em;"><span class="pstrut" style="height:3em;"></span><span style="height:0.24em;"><svg width='100%' height='0.24em' viewBox='0 0 1062 239' preserveAspectRatio='none'><path d='M529 0h5l519 115c5 1 9 5 9 10 0 1-1 2-1 3l-4 22
+c-1 5-5 9-11 9h-2L532 67 19 159h-2c-5 0-9-4-11-9l-5-22c-1-6 2-12 8-13z'/></svg></span></span></span></span></span></span><span class="mord mathnormal" style="margin-right:0.07847em;">X</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">W</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.938em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mopen mtight">(</span><span class="mord mtight">0</span><span class="mclose mtight">)</span></span></span></span></span></span></span></span></span><span class="mclose delimcenter" style="top:0em;"><span class="delimsizing size2">)</span></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">W</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.938em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mopen mtight">(</span><span class="mord mtight">1</span><span class="mclose mtight">)</span></span></span></span></span></span></span></span></span><span class="mclose delimcenter" style="top:0em;"><span class="delimsizing size2">)</span></span></span></span></span></span></span></p>
+<p>Loss 函数的计算方法很简单，就是通过对所有有标签的例子的交叉熵误差来计算，其中<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>Y</mi><mi>l</mi></msub></mrow><annotation encoding="application/x-tex">Y_{l}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.22222em;">Y</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.33610799999999996em;"><span style="top:-2.5500000000000003em;margin-left:-0.22222em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.01968em;">l</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> 是有标签的节点的集合。</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi mathvariant="script">L</mi><mo>=</mo><mo>−</mo><munder><mo>∑</mo><mrow><mi>l</mi><mo>∈</mo><msub><mi mathvariant="script">Y</mi><mi>L</mi></msub></mrow></munder><munderover><mo>∑</mo><mrow><mi>f</mi><mo>=</mo><mn>1</mn></mrow><mi>F</mi></munderover><msub><mi>Y</mi><mrow><mi>l</mi><mi>f</mi></mrow></msub><mi>ln</mi><mo>⁡</mo><msub><mi>Z</mi><mrow><mi>l</mi><mi>f</mi></mrow></msub></mrow><annotation encoding="application/x-tex">\mathcal{L}=-\sum_{l \in \mathcal{Y}_{L}} \sum_{f=1}^{F} Y_{l f} \ln Z_{l f}
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord"><span class="mord mathcal">L</span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:3.266557em;vertical-align:-1.438221em;"></span><span class="mord">−</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.0500050000000003em;"><span style="top:-1.847887em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.01968em;">l</span><span class="mrel mtight">∈</span><span class="mord mtight"><span class="mord mtight"><span class="mord mathcal mtight" style="margin-right:0.08222em;">Y</span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3448em;"><span style="top:-2.3567071428571427em;margin-right:0.07142857142857144em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">L</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.14329285714285717em;"><span></span></span></span></span></span></span></span></span></span><span style="top:-3.050005em;"><span class="pstrut" style="height:3.05em;"></span><span><span class="mop op-symbol large-op">∑</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.402418em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.8283360000000002em;"><span style="top:-1.8478869999999998em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.10764em;">f</span><span class="mrel mtight">=</span><span class="mord mtight">1</span></span></span></span><span style="top:-3.0500049999999996em;"><span class="pstrut" style="height:3.05em;"></span><span><span class="mop op-symbol large-op">∑</span></span></span><span style="top:-4.300005em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.13889em;">F</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.438221em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.22222em;">Y</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361079999999999em;"><span style="top:-2.5500000000000003em;margin-left:-0.22222em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.01968em;">l</span><span class="mord mathnormal mtight" style="margin-right:0.10764em;">f</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mop">ln</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07153em;">Z</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361079999999999em;"><span style="top:-2.5500000000000003em;margin-left:-0.07153em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.01968em;">l</span><span class="mord mathnormal mtight" style="margin-right:0.10764em;">f</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span></span></span></span></span></p>
+<h3 id="layers的含义"><a class="anchor" href="#layers的含义">#</a> <strong>layers 的含义</strong></h3>
+<p>层数是指节点特征能够传输的最远距离。例如，在 1 层的 GCN 中，每个节点只能从其邻居那里获得信息。每个节点收集信息的过程是独立进行的，对所有节点来说都是在同一时间进行的。</p>
+<p>当在第一层的基础上再叠加一层时，我们重复收集信息的过程，但这一次，邻居节点已经有了自己的邻居的信息（来自上一步）。这使得层数成为每个节点可以走的最大跳步。所以，这取决于我们认为一个节点应该从网络中获取多远的信息，我们可以为 layers 设置一个合适的数字。但同样，在图中，通常我们不希望走得太远。设置为 6-7 跳，我们就几乎可以得到整个图，但是这就使得聚合的意义不大。</p>
+<p><img data-src="30adcbef76094b365828f039f2d62ede8c109d4a.png" alt="" /></p>
+<p>例： 收集目标节点 i 的两层信息的过程</p>
+<p><strong>GCN 应该叠加几层？</strong></p>
+<p>在论文中，作者还分别对浅层和深层的 GCN 进行了一些实验。在下图中，我们可以看到，使用 2 层或 3 层的模型可以得到最好的结果。此外，对于深层的 GCN（超过 7 层），反而往往得到不好的性能（虚线蓝色）。一种解决方案是借助隐藏层之间的残余连接（紫色线）。</p>
+<p><img data-src="77094b36acaf2edde0d8eca1df0a53ee3901936a.png" alt="" /></p>
+<p>不同层数的性能。图片来自论文 [3]</p>
+<p>GCNs 用于图上的半监督学习。GCNs 同时使用节点特征和结构进行训练 GCN 的主要思想是取所有邻居节点特征（包括自身节点）的加权平均值。度低的节点获得更大的权重。之后，我们将得到的特征向量通过神经网络进行训练。我们可以堆叠更多的层数来使 GCN 更深。考虑深度 GCNs 的残差连接。通常，我们会选择 2 层或 3 层的 GCN。</p>
+<p>数学笔记：当看到对角线矩阵时，要想到矩阵缩放。这里有一个使用 StellarGraph 库的 GCN 演示 [5]。该库还提供了许多其他 GNN 的算法。该框架目前仅限于无向图（加权或不加权）。但是，可以通过将原始有向图表示为一个无向的两端图，并增加代表原始图中边的节点，来处理有向边和边特征。</p>
+<p>对于 GCN，我们似乎可以同时利用节点特征和图的结构。然而，如果图中的边有不同的类型呢？我们是否应该对每种关系进行不同的处理？在这种情况下如何聚合邻居节点？最近有哪些先进的方法？如何处理边的不同关系（兄弟、朋友、......）？</p>
+<p><img data-src="77c6a7efce1b9d1698b12902a2c4e6888c546404.jpeg" alt="" /></p>
+<p>参考文献</p>
+<p>[1] Excellent slides on Graph Representation Learning by Jure Leskovec (Stanford): <span class="exturl" data-url="aHR0cHM6Ly9kcml2ZS5nb29nbGUuY29tL2ZpbGUvZC8xQnkzdWRiT3QxMG1vSWNTRWdVUTBUUjl0d1FYOUFxMEcvdmlldz91c3A9c2hhcmluZw==">https://drive.google.com/file/d/1By3udbOt10moIcSEgUQ0TR9twQX9Aq0G/view?usp=sharing</span></p>
+<p>[2] Video Graph Convolutional Networks (GCNs) made simple: <span class="exturl" data-url="aHR0cHM6Ly93d3cueW91dHViZS5jb20vd2F0Y2g/dj0yS1JBT1pJVUx6dw==">https://www.youtube.com/watch?v=2KRAOZIULzw</span></p>
+<p>[3] Paper Semi-supervised Classification with Graph Convolutional Networks (2017): <span class="exturl" data-url="aHR0cHM6Ly9hcnhpdi5vcmcvcGRmLzE2MDkuMDI5MDcucGRm">https://arxiv.org/pdf/1609.02907.pdf</span></p>
+<p>[4] GCN source code: <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3RraXBmL2djbg==">https://github.com/tkipf/gcn</span></p>
+<p>[5] Demo with StellarGraph library: <span class="exturl" data-url="aHR0cHM6Ly9zdGVsbGFyZ3JhcGgucmVhZHRoZWRvY3MuaW8vZW4vc3RhYmxlL2RlbW9zL25vZGUtY2xhc3NpZmljYXRpb24vZ2NuLW5vZGUtY2xhc3NpZmljYXRpb24uaHRtbA==">https://stellargraph.readthedocs.io/en/stable/demos/node-classification/gcn-node-classification.html</span></p>
+<h3 id="图兼容神经网络的挑战"><a class="anchor" href="#图兼容神经网络的挑战">#</a> <strong>图兼容神经网络的挑战</strong></h3>
+<p>主要挑战是怎么表示节点之间的连接</p>
+<p><strong>使用邻接矩阵的问题：</strong></p>
+<p><strong>复杂度过高</strong>：节点的数量通常很多，邻接矩阵的自然就更大了</p>
+<p><strong>排序不变性</strong>：不同的邻接矩阵在很多情况下表达的是一个图，如下面的例子中，两个图所表达的社交网络的人物之间关系并没有发生变化，但是邻接矩阵表达的结果却完全不同</p>
+<p><img data-src="Untitled%205.png" alt="" /></p>
+<h3 id="2-gnn是怎么预测的"><a class="anchor" href="#2-gnn是怎么预测的">#</a> <strong>2、GNN 是怎么预测的</strong></h3>
+<p><strong>GCN 为图卷积神经网络，其为 GNN 的一种，区别主要在于采用卷积算子进行信息汇聚。</strong></p>
+<p><strong>a、对节点预测</strong></p>
+<p>我们已经有了一个最简单的 GNN，预测阶段直接将顶点的向量输入到对应的 GNN 中（在这个最简单的 GNN 中，其实就是输入到其中一个 MLP），输出的结果再加一个线性分类器（当然，也可以使用其他分类器，只要适合于对应任务就可以）就可以做分类了。</p>
+<p><img data-src="v2-796fe06cd0cf7a7e143f584dc0abf5de_1440w.jpg" alt="" /></p>
+<p><strong>b、pooling 技术</strong></p>
+<p>很多情况下我们只有边的信息，而没有节点的信息，这时我们在想要获取节点向量时（预测阶段），就要使用 pooling 技术。</p>
+<p><img data-src="v2-2ec8f7d2349c545f5a854c4d59450969_1440w.jpg" alt="" /></p>
+<p>如上图，某一个节点的向量由其相关的边向量及全局向量加和而来；</p>
+<p>类似的，在我们只有节点向量而需要边向量时、只有节点向量而需要全局向量时，都可以采用类似的思路，下面三张图分别代表了以上三种情况的 pooling 细节</p>
+<p><img data-src="v2-d116ffe456780e38d83286bd2595ee95_1440w.jpg" alt="" /></p>
+<p>边传给节点↑</p>
+<p><img data-src="v2-8b9db72fa0d1cd0f56af0936b62996db_1440w.jpg" alt="" /></p>
+<p>节点传给边↑</p>
+<p><img data-src="v2-f18486d579215ee9d020a5e06e67b67b_1440w.jpg" alt="" /></p>
+<p>节点传给全局↑</p>
+<p><strong>c、在图中传递信息</strong></p>
+<p>上一部分介绍的只有在预测阶段，由于没有顶点向量才使用的 pooling 技术，事实上，为了 “传递顶点之间的消息”，pooling 技术应当使用在 GNN 网络中</p>
+<p><img data-src="v2-dd6aae64ac75ffb9681fa3e76dea63a9_1440w.jpg" alt="" /></p>
+<p>上图中的<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>ρ</mi><mrow><msub><mi>V</mi><mi>n</mi></msub><mo>→</mo><msub><mi>V</mi><mi>n</mi></msub></mrow></msub></mrow><annotation encoding="application/x-tex">\rho_{V_{n}\rightarrow V_{n}}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68066em;vertical-align:-0.2501em;"></span><span class="mord"><span class="mord mathnormal">ρ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.22222em;">V</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.16454285714285719em;"><span style="top:-2.357em;margin-left:-0.22222em;margin-right:0.07142857142857144em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">n</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.143em;"><span></span></span></span></span></span></span><span class="mrel mtight">→</span><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.22222em;">V</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.16454285714285719em;"><span style="top:-2.357em;margin-left:-0.22222em;margin-right:0.07142857142857144em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">n</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.143em;"><span></span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2501em;"><span></span></span></span></span></span></span></span></span></span> 过程就是使用 pooling 变换顶点向量的过程，这个过程如下图，和上一部分介绍的很相似，只是每一个顶点的向量表示变换成了和其他顶点向量加和的结果</p>
+<p><img data-src="v2-d8be20bfcd27cfae2af34805e5731f8a_1440w.jpg" alt="" /></p>
+<p><strong>d、更好的边 / 节点的向量表示（消息传递）</strong></p>
+<p>上面部分我们介绍过在只有边的向量，而没有节点向量的情况下，我们如何使用 pooling 技术在预测阶段解决这个问题；这一部分我们介绍如何获得更好的带有 “消息传递” 的节点 / 边的向量，将这一 pooling 融合到 GNN 中（<strong>即使</strong>我们不缺边 / 节点向量）；</p>
+<p>注意：与 c 部分不同，这一部分重点强调【边到节点】/【节点到边】的消息传递。</p>
+<p><em><strong>怎么进行节点 - 边之间的消息传递？</strong></em></p>
+<p>如下图，<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>ρ</mi><mrow><msub><mi>V</mi><mi>n</mi></msub><mo>→</mo><msub><mi>E</mi><mi>n</mi></msub></mrow></msub></mrow><annotation encoding="application/x-tex">\rho_{V_{n}\rightarrow E_{n}}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68066em;vertical-align:-0.2501em;"></span><span class="mord"><span class="mord mathnormal">ρ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.22222em;">V</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.16454285714285719em;"><span style="top:-2.357em;margin-left:-0.22222em;margin-right:0.07142857142857144em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">n</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.143em;"><span></span></span></span></span></span></span><span class="mrel mtight">→</span><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.05764em;">E</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.16454285714285719em;"><span style="top:-2.357em;margin-left:-0.05764em;margin-right:0.07142857142857144em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">n</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.143em;"><span></span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2501em;"><span></span></span></span></span></span></span></span></span></span> 和<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>ρ</mi><mrow><msub><mi>E</mi><mi>n</mi></msub><mo>→</mo><msub><mi>V</mi><mi>n</mi></msub></mrow></msub></mrow><annotation encoding="application/x-tex">\rho_{E_{n}\rightarrow V_{n}}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68066em;vertical-align:-0.2501em;"></span><span class="mord"><span class="mord mathnormal">ρ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.05764em;">E</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.16454285714285719em;"><span style="top:-2.357em;margin-left:-0.05764em;margin-right:0.07142857142857144em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">n</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.143em;"><span></span></span></span></span></span></span><span class="mrel mtight">→</span><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.22222em;">V</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.16454285714285719em;"><span style="top:-2.357em;margin-left:-0.22222em;margin-right:0.07142857142857144em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">n</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.143em;"><span></span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2501em;"><span></span></span></span></span></span></span></span></span></span> 都是类似于上面的<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>ρ</mi><mrow><msub><mi>V</mi><mi>n</mi></msub><mo>→</mo><msub><mi>V</mi><mi>n</mi></msub></mrow></msub></mrow><annotation encoding="application/x-tex">\rho_{V_{n}\rightarrow V_{n}}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68066em;vertical-align:-0.2501em;"></span><span class="mord"><span class="mord mathnormal">ρ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.22222em;">V</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.16454285714285719em;"><span style="top:-2.357em;margin-left:-0.22222em;margin-right:0.07142857142857144em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">n</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.143em;"><span></span></span></span></span></span></span><span class="mrel mtight">→</span><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.22222em;">V</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.16454285714285719em;"><span style="top:-2.357em;margin-left:-0.22222em;margin-right:0.07142857142857144em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">n</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.143em;"><span></span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2501em;"><span></span></span></span></span></span></span></span></span></span> 消息传递 pooling 函数，不同之处在于加和的对象发生了变化（<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>ρ</mi><mrow><msub><mi>V</mi><mi>n</mi></msub><mo>→</mo><msub><mi>E</mi><mi>n</mi></msub></mrow></msub></mrow><annotation encoding="application/x-tex">\rho_{V_{n}\rightarrow E_{n}}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68066em;vertical-align:-0.2501em;"></span><span class="mord"><span class="mord mathnormal">ρ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.22222em;">V</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.16454285714285719em;"><span style="top:-2.357em;margin-left:-0.22222em;margin-right:0.07142857142857144em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">n</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.143em;"><span></span></span></span></span></span></span><span class="mrel mtight">→</span><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.05764em;">E</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.16454285714285719em;"><span style="top:-2.357em;margin-left:-0.05764em;margin-right:0.07142857142857144em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">n</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.143em;"><span></span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2501em;"><span></span></span></span></span></span></span></span></span></span> 表示一个边的向量由其<strong>相连的两个节点向量</strong>与<strong>其自身</strong>进行加和（concat 也可以），这个过程中边和节点的向量维度可能不一样，进行一个投影即可）</p>
+<p><img data-src="v2-6906b48639c7d7d7504aa84a88d892f5_1440w.jpg" alt="" /></p>
+<p><em><strong>消息传递的先后</strong></em></p>
+<p>上图中是先进行点 -&gt; 边，再进行边 -&gt; 点的消息传递，还有其他的方式，如下图：先点后边、先边后点、融合进行（Molecular graph convolutions: moving beyond fingerprints ）</p>
+<p><img data-src="v2-19283a7b852d53af8116e5f5d38c0438_1440w.jpg" alt="" /></p>
+<p><strong>e、将全局信息 U 加入到消息传递</strong></p>
+<p><em><strong>为什么要有全局向量 U？</strong></em></p>
+<p>很多时候一个图是很大的，这个时候如果希望获得很远的消息传递是很困难的，如果使用全连接的方式进行会造成很大的复杂度且不合适，这个时候就需要一个<strong>虚拟的节点</strong>，这个虚拟节点和所有的点相邻、和所有的边相连；这样就保持了一个远距离消息传递的可能性；（这也是为什么前面的预测示意图中会出现 U 的原因，U 作为一个虚拟节点要加入到其他所有节点 / 边的预测阶段）</p>
+<p><em><strong>全局向量 U 怎么和 V、E 消息传递？</strong></em></p>
+<p>我们就把这个全局向量 U 视作一个虚拟节点向量，像其他节点一样参与到节点 - 边的消息传递中；（举例来说，对一个节点，我们可以得到其相邻节点传来的向量，相邻边的向量以及全局向量）最后我们还要完成全局 - 节点、全局 - 边的消息传递（也就相当于多进行了一次节点 - 节点、节点 - 边的消息传递）</p>
+<p><img data-src="v2-09c7389d66e6d16f5ca10659715f3036_1440w.jpg" alt="" /></p>
+<p>预测阶段，比如要预测节点，把它附近的节点、边以及全局向量一起拿过来（投影后加和或是 concat 都可），再输入到训练好的 GNN 中，输出层加一个分类器，得到结果；</p>
+<p>作者还提到，concat 的方式更适合使得新节点适应整个网络（To condition the new node embedding on all these possible sources of information, we can simply concatenate them. ）；而投影后加和的方式中还可以再多加一个 feature-wise modulation layer（<strong>Feature-wise transformations</strong> V. Dumoulin, E. Perez），很像 transformer 中的 attention 机制.</p>
+<p>作者还提供了一个 playgorund，以及解释各种超参数的影响，但是和 GNN 理论介绍关系不大</p>
+<p><img data-src="v2-515dcfc8073e4324b27324292ad710a3_1440w.jpg" alt="" /></p>
+<p>向量维度的影响</p>
+<p>上图是三种向量的维度对精度（AUC）的影响（其实也没有很大，因为方差很大）</p>
+<p><img data-src="v2-cef07bcb579cf37c0c7fbdaf7fadccb5_1440w.jpg" alt="" /></p>
+<p>GNN 层数的影响</p>
+<p>上图是 GNN 层数的影响，右边部分可以看到层数增加会使得精度提高，但是方差依然很大</p>
+<p><img data-src="v2-a769d6b739d9b58294acaa5f29a6cf86_1440w.jpg" alt="" /></p>
+<p>汇聚操作的影响</p>
+<p>上图是消息传递后 aggregation 的操作的影响</p>
+<p><img data-src="v2-1399152ffc691543ca9225f804ca8334_1440w.jpg" alt="" /></p>
+<p>消息传递方式的影响</p>
+<h2 id="其他与gnn相关的话题"><a class="anchor" href="#其他与gnn相关的话题">#</a> <strong>其他与 GNN 相关的话题</strong></h2>
+<p><strong>下面介绍的话题都是一些 open research question，想要对 GNN 做进一步研究都可以从中找到一些可能的方向。</strong></p>
+<h3 id="1-其他类型的图"><a class="anchor" href="#1-其他类型的图">#</a> <strong>1、其他类型的图</strong></h3>
+<p><img data-src="v2-b62b287d2b83382f9800aaeb5e1d4e64_1440w.jpg" alt="" /></p>
+<p>左图是多种边的图、右图是多层图</p>
+<p>上图示意了多种边的图与多层图的例子</p>
+<h3 id="2-图的采样与batching"><a class="anchor" href="#2-图的采样与batching">#</a> <strong>2、图的采样与 batching</strong></h3>
+<p><img data-src="v2-b4e0821f7840abdf54a3868dfa4cd9d1_1440w.jpg" alt="" /></p>
+<p>layer 0 的节点能看到 layer 3 很多节点</p>
+<p>GNN 最后一层一个顶点能看到很多点（如上图所示，layer 0 的节点会看到 layer 3 的所有节点），甚至是整个图的所有点，这会带来计算梯度时要把整个图的中间结果保存下来，这会带来很大的复杂度，因此需要采样，采样的方法有：①随即节点采样、②随机游走的方式、③边随机游走边把邻居找出来、④固定宽度遍历找一个子图（具体哪一个比较好取决于这个图的特点）</p>
+<p><img data-src="v2-ba0cf78b2e39a97f1d82c0484baa3391_1440w.jpg" alt="" /></p>
+<p>①和②</p>
+<p><img data-src="v2-9ee46fe0a4c508099408bac904dfbd31_1440w.jpg" alt="" /></p>
+<p>③和④</p>
+<p>怎么采样依然是一个重要的问题。同样，怎么给定这些很多小的子图放到一起进行 tensor 的并行计算也是一个重要的问题。</p>
+<h3 id="3-inductive-biases"><a class="anchor" href="#3-inductive-biases">#</a> <strong>3、Inductive biases</strong></h3>
+<p><strong>a、什么是 inductive biases</strong></p>
+<p>我们拿到一个数据总是希望更好地利用其中的特征信息，并得到更好的预测效果、更少的训练时间、更少的参数以及更好地泛化性；对于一个 image 来说，我们总是希望图中地主要主体无论在图的哪个位置，我们依然希望能够识别出来，因此出来了 CNN 的方式；对于文本，一个词所在的位置不同可能会造成语义的变化，因此出现了序列处理的方式；</p>
+<p><strong>b、一个 graph 的 inductive biase</strong></p>
+<p>对于一个图，我们关系节点之间的邻接关系，并希望我们使用的数据结构能够清晰地表达这种邻接关系，同时保持图的对称性（顶点顺序交换后依然一样）；这意味着我们在设计对节点或边（比如我们用前文的邻接列表的方式表示连接关系）的变换时，应当做到操作顺序无关紧要（否则的话就表示节点的顺序影响到了我们的结果，这不符合要求）</p>
+<h3 id="4-消息传递中aggregation的比较"><a class="anchor" href="#4-消息传递中aggregation的比较">#</a> <strong>4、消息传递中 aggregation 的比较</strong></h3>
+<p>其实无论是 sum、还是 max、min 都各有好坏，主要是看适不适合（There is no operation that is uniformly the best choice. &amp; domain specific aggregation operations can also be designed.）</p>
+<h3 id="5-将gcn近似地看作是多个子图"><a class="anchor" href="#5-将gcn近似地看作是多个子图">#</a> <strong>5、将 GCN 近似地看作是多个子图</strong></h3>
+<p>GCN（图卷积网络）就是我们进行了汇聚操作的多层的 GNN（也就是加了各种消息传递后的 GNN）</p>
+<p>一个 GCN 往往包含 k 层，每深入一层，看到的节点其实就多一步，这样其实在一开始枚举所有子图与通过一个 GCN 的结果往往是近似的（enumerating these subgraphs from the beginning vs building them dynamically as in a GCN, might be prohibitive.）</p>
+<h3 id="6-剩余部分"><a class="anchor" href="#6-剩余部分">#</a> <strong>6、剩余部分</strong></h3>
+<p><strong>a、点看成边 / 边看成点</strong></p>
+<p>点看成边，边看成点后的图叫对偶图，对偶图与原来的图相比，邻接关系表其实是不变的，这样就代表我去做边的分类，也可以在其对偶图上做卷积并分类（Dual-Primal Graph Convolutional Networks）</p>
+<p><strong>b、图的卷积是矩阵乘法，矩阵乘法是在图上行走</strong></p>
+<p>具体的卷积、汇聚、游走等怎么用矩阵实现</p>
+<p><strong>c、图上的汇聚操作后的注意力机制</strong></p>
+<p>这里是前面提到的注意力机制的使用</p>
+<p><img data-src="v2-d4c1043217c77bacc5e4864c9143175a_1440w.jpg" alt="" /></p>
+<p>注意力机制</p>
+<p><strong>d、图的可解释性</strong></p>
+<p>主要关注实际应用中，用 GNN 时如何做到可解释性以更好地适用到实际问题</p>
+<p><strong>e、图的生成问题</strong></p>
+<p>怎么对图有效建模做生成问题</p>
+<p>评价：交互式图很有利于理解，图神经网络很强大，强大在几乎所有的问题都能表示成 graph，但是由于其稀疏性也带来了很多加速计算的问题；怎么采样，怎么优化，图的架构如何，怎么聚集操作对于效果影响很大（很敏感），所以实际上非常具有挑战性。也就导致了工业界的应用其实很少，并不完善。</p>
+
+      <div class="tags">
+          <a href="/tags/study/" rel="tag"><i class="ic i-tag"></i> study</a>
+      </div>
+  </div>
+
+   <footer>
+
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">編集日</span>
+    <time title="修正日：2023-04-12 16:38:55" itemprop="dateModified" datetime="2023-04-12T16:38:55+08:00">2023-04-12</time>
+  </span>
+</div>
+
+      
+
+<div id="copyright">
+<ul>
+  <li class="author">
+    <strong>著者： </strong>ZiJiao Hu <i class="ic i-at"><em>@</em></i>Zijiao Blog
+  </li>
+  <li class="link">
+    <strong>記事へのリンク：</strong>
+    <a href="https://huzijiao.github.io/2023/04/12/GCN%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" title="GCN学习笔记">https://huzijiao.github.io/2023/04/12/GCN学习笔记/</a>
+  </li>
+  <li class="license">
+    <strong>著作権表示： </strong>このブログ内のすべての記事は、特別な記載がない限り <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</span> の下のライセンスで保護されています。
+  </li>
+</ul>
+</div>
+
+  </footer>
+
+</article>
+
+  </div>
+  
+
+<div class="post-nav">
+    <div class="item left">
+      
+
+  <a href="/2023/04/11/Toefl1/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva2.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1giclx6phq6j20zk0m8e36.jpg" title="托福写作笔记（一）">
+  <span class="type">前の記事</span>
+  <span class="category"><i class="ic i-flag"></i> Study</span>
+  <h3>托福写作笔记（一）</h3>
+  </a>
+
+    </div>
+    <div class="item right">
+      
+
+  <a href="/2023/04/13/NorthFace-Banchee-%E7%99%BB%E5%B1%B1%E5%8C%85%E6%B5%8B%E8%AF%84/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva2.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gipeuibk9fj20zk0m8ay2.jpg" title="NorthFace Banchee 登山包测评">
+  <span class="type">次の記事</span>
+  <span class="category"><i class="ic i-flag"></i> Outdoors</span>
+  <h3>NorthFace Banchee 登山包测评</h3>
+  </a>
+
+    </div>
+</div>
+
+  
+  <div class="wrap" id="comments"></div>
+
+
+        </div>
+        <div id="sidebar">
+          
+
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="見出し">
+          <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#gcn%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0"><span class="toc-number">1.</span> <span class="toc-text"> GCN 学习笔记</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1gcn%E7%AE%80%E4%BB%8B"><span class="toc-number">1.1.</span> <span class="toc-text"> 1.GCN 简介</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#layers%E7%9A%84%E5%90%AB%E4%B9%89"><span class="toc-number">1.1.1.</span> <span class="toc-text"> layers 的含义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%BE%E5%85%BC%E5%AE%B9%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E7%9A%84%E6%8C%91%E6%88%98"><span class="toc-number">1.1.2.</span> <span class="toc-text"> 图兼容神经网络的挑战</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-gnn%E6%98%AF%E6%80%8E%E4%B9%88%E9%A2%84%E6%B5%8B%E7%9A%84"><span class="toc-number">1.1.3.</span> <span class="toc-text"> 2、GNN 是怎么预测的</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B6%E4%BB%96%E4%B8%8Egnn%E7%9B%B8%E5%85%B3%E7%9A%84%E8%AF%9D%E9%A2%98"><span class="toc-number">1.2.</span> <span class="toc-text"> 其他与 GNN 相关的话题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%85%B6%E4%BB%96%E7%B1%BB%E5%9E%8B%E7%9A%84%E5%9B%BE"><span class="toc-number">1.2.1.</span> <span class="toc-text"> 1、其他类型的图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%9B%BE%E7%9A%84%E9%87%87%E6%A0%B7%E4%B8%8Ebatching"><span class="toc-number">1.2.2.</span> <span class="toc-text"> 2、图的采样与 batching</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-inductive-biases"><span class="toc-number">1.2.3.</span> <span class="toc-text"> 3、Inductive biases</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E6%B6%88%E6%81%AF%E4%BC%A0%E9%80%92%E4%B8%ADaggregation%E7%9A%84%E6%AF%94%E8%BE%83"><span class="toc-number">1.2.4.</span> <span class="toc-text"> 4、消息传递中 aggregation 的比较</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E5%B0%86gcn%E8%BF%91%E4%BC%BC%E5%9C%B0%E7%9C%8B%E4%BD%9C%E6%98%AF%E5%A4%9A%E4%B8%AA%E5%AD%90%E5%9B%BE"><span class="toc-number">1.2.5.</span> <span class="toc-text"> 5、将 GCN 近似地看作是多个子图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-%E5%89%A9%E4%BD%99%E9%83%A8%E5%88%86"><span class="toc-number">1.2.6.</span> <span class="toc-text"> 6、剩余部分</span></a></li></ol></li></ol></li></ol>
+      </div>
+      <div class="related panel pjax" data-title="関連記事">
+        <ul>
+          <li class="active"><a href="/2023/04/12/GCN%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="bookmark" title="GCN学习笔记">GCN学习笔记</a></li>
+        </ul>
+      </div>
+      <div class="overview panel" data-title="概要">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="ZiJiao Hu"
+      data-src="/images/avatar.jpg">
+  <p class="name" itemprop="name">ZiJiao Hu</p>
+  <div class="description" itemprop="description">to strive, to seek, to find, and never, ever to yield!</div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/archives/">
+        <span class="count">3</span>
+        <span class="name">ポスト</span>
+      </a>
+    </div>
+    <div class="item categories">
+      <a href="/categories/">
+        <span class="count">3</span>
+        <span class="name">カテゴリ</span>
+      </a>
+    </div>
+    <div class="item tags">
+      <a href="/tags/">
+        <span class="count">5</span>
+        <span class="name">タグ</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+</div>
+
+<ul class="menu">
+  
+    
+  <li class="item">
+    <a href="/" rel="section"><i class="ic i-home"></i>ホーム</a>
+  </li>
+
+    
+  <li class="item">
+    <a href="/about/" rel="section"><i class="ic i-user"></i>プロフィール</a>
+  </li>
+
+        
+  <li class="item dropdown">
+      <a href="javascript:void(0);"><i class="ic i-feather"></i>投稿</a>
+    <ul class="submenu">
+
+        
+  <li class="item">
+    <a href="/archives/" rel="section"><i class="ic i-list-alt"></i>アーカイブ</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/categories/" rel="section"><i class="ic i-th"></i>カテゴリ</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/tags/" rel="section"><i class="ic i-tags"></i>タグ</a>
+  </li>
+
+  </ul>
+    
+  <li class="item">
+    <a href="/friends/" rel="section"><i class="ic i-heart"></i>friends</a>
+  </li>
+
+    
+  <li class="item">
+    <a href="/links/" rel="section"><i class="ic i-magic"></i>links</a>
+  </li>
+
+    
+  <li class="item">
+    <a href="/Frontend/" rel="section"><i class="ic i-magic"></i>Frontend</a>
+  </li>
+
+
+</ul>
+
+      </div>
+    </div>
+  </div>
+
+  <ul id="quick">
+    <li class="prev pjax">
+        <a href="/2023/04/11/Toefl1/" rel="prev" title="前の記事"><i class="ic i-chevron-left"></i></a>
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+        <a href="/2023/04/13/NorthFace-Banchee-%E7%99%BB%E5%B1%B1%E5%8C%85%E6%B5%8B%E8%AF%84/" rel="next" title="次の記事"><i class="ic i-chevron-right"></i></a>
+    </li>
+    <li class="percent"></li>
+  </ul>
+</div>
+
+
+        </div>
+        <div class="dimmer"></div>
+      </div>
+    </main>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+<div class="rpost pjax">
+  <h2>ランダムな記事</h2>
+  <ul>
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/studynote/" title="カテゴリ studynote">studynote</a>
+</div>
+
+    <span><a href="/2023/04/12/GCN%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" title="GCN学习笔记">GCN学习笔记</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/Study/" title="カテゴリ Study">Study</a>
+</div>
+
+    <span><a href="/2023/04/11/Toefl1/" title="托福写作笔记（一）">托福写作笔记（一）</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/Outdoors/" title="カテゴリ Outdoors">Outdoors</a>
+</div>
+
+    <span><a href="/2023/04/13/NorthFace-Banchee-%E7%99%BB%E5%B1%B1%E5%8C%85%E6%B5%8B%E8%AF%84/" title="NorthFace Banchee 登山包测评">NorthFace Banchee 登山包测评</a></span>
+  </li>
+
+  </ul>
+</div>
+<div>
+  <h2>最近のコメント</h2>
+  <ul class="leancloud-recent-comment"></ul>
+</div>
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 2010 – 
+    <span itemprop="copyrightYear">2023</span>
+    <span class="with-love">
+      <i class="ic i-sakura rotate"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">ZiJiao Hu @ ZiJiao's Blog</span>
+  </div>
+  <div class="powered-by">
+    Powered by <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
+  </div>
+</div>
+
+      </div>
+    </footer>
+  </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: '2023/04/12/GCN学习笔记/',
+    favicon: {
+      show: "（●´3｀●）やれやれだぜ",
+      hide: "(´Д｀)大変だ！"
+    },
+    search : {
+      placeholder: "検索…",
+      empty: "「 ${query} 」については何も見つかりませんでした",
+      stats: "${time} ms以内に ${hits} 件の結果が見つかりました"
+    },
+    valine: true,fancybox: true,
+    copyright: 'コピーは成功しました。 <br> 再印刷については、 ％s 契約に従ってください。',
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
+
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
+
+<script src="/js/app.js?v=0.2.5"></script>
+
+
+
+
+</body>
+</html>
